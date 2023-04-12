@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wildfire Damage Prediction</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h1>Wildfire Damage Prediction</h1>
+
+  <br><br>
+  <form action="{{ url_for('main.predict') }}" method="POST">
+    <label>Tempavg:</label>
+    <input type="number" name="tempavg" min="-100" max="100">
+    <br><br>
+    <label>Humidity:</label>
+    <input type="number" name="humidrel" min="0" max="100">
+    <br><br>
+    <label>Windavg:</label>
+    <input type="number" name="windavg" min="0" max="50">
+    <br><br>
+    <label>Raindays:</label>
+    <input type="number" name="raindays" min="0" max="50">
+    <br><br>
+    <button type="submit">Predict Wildfire Damage</button>
+  </form>
+
+  <br><br>
+  {% if prediction is defined %}
+    {% if prediction is not none %}
+      <label>Predicted Wildfire Damage:</label>
+      <span>{{ prediction }}</span>
+      </span>ha</span>
+    {% endif %}
+  {% endif %}
+</body>
+</html>
